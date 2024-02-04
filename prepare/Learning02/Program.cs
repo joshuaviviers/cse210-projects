@@ -1,42 +1,33 @@
 using System;
+using System.Diagnostics.Contracts;
 using System.Threading.Tasks.Dataflow;
-
 class Program
 {
     static void Main(string[] args)
     {
-        Console.Write("What is your grade? ");
-        string userInput = Console.ReadLine();
-        int grade = int.Parse(userInput);
+        Resume resume1 = new Resume();
+        resume1._name = "Joshua Viviers";
+        resume1._job = "Electrical Engineer";
 
-    if (grade >= 90)
-    {
-        Console.WriteLine("Your grade is an A. Well done!");
-    }
-    else if (grade >= 80)
-    {
-        Console.WriteLine("Your grade is a B. Well done.");
-    }
-    else if (grade >= 70)
-    {
-        Console.WriteLine("Your grade is a C.");
-    }
-    else if (grade >= 60)
-    {
-        Console.WriteLine("Your grade is a D.");
-    }
-    else
-    {
-        Console.WriteLine("Your grade is a F.");
-    }
+        Job job1 = new Job();
+        job1._company = "Tesla";
+        job1._jobTitle = "Head Engineer";
+        job1._startYear = 2001;
+        job1._endYear = 2015;
 
-    if (grade >= 70)
+        List<Resume> resumes = new List<Resume>();
+        resumes.Add(resume1);
+
+        List<Job> jobs = new List<Job>();
+        jobs.Add(job1);
+    
+        foreach(Resume resume in resumes)
     {
-        Console.WriteLine("You Passed! Well done");
+        resume.ShowResume();
     }
-    else
-    {
-        Console.WriteLine("Better luck next time");
-    }
+        foreach(Job job in jobs)
+        {
+            job.ShowJob();
+        }
     }
 }
